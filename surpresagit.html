@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dia dos Namorados</title>
+  <style>
+    body {
+  margin: 0;
+  background: url('noitestrelada.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Comic Sans MS', cursive;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+
+    #heart-btn {
+      background-color: #12098b;
+      color: white;
+      font-size: 3em;
+      border: none;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+      z-index: 2;
+    }
+
+    #heart-btn:hover {
+      transform: scale(1.1);
+    }
+
+    #message, #photo {
+      display: none;
+      z-index: 2;
+    }
+
+    
+
+    #message {
+      margin-top: 20px;
+      font-size: 2.5em;
+      color: #ffffff;
+      text-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+      background-color: rgba(28, 32, 219, 0.8); /* bolha branca semi-transparente */
+  padding: 20px 30px;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  max-width: 90%;
+    }
+
+    #photo {
+      margin-top: 20px;
+      width: 300px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .sunflower {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-image: url("girassol1.png"); /* Agora vem da mesma pasta */
+  background-size: cover;
+  animation: float 4s infinite ease-in-out;
+  z-index: 1;
+}
+
+
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(10deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Botão coração central -->
+  <button id="heart-btn">🌻</button>
+
+  <!-- Mensagem e foto (inicialmente escondidas) -->
+  <div id="message">Feliz Dia dos Brigantes, meu amor! 🌻</div>
+  <img id="photo" src="milena.jpg" alt="Nossa foto">
+  <!-- 🔺 Substitua 'SUA_IMAGEM_AQUI.jpg' pelo caminho da sua foto -->
+
+  <script>
+    const button = document.getElementById("heart-btn");
+    const message = document.getElementById("message");
+    const photo = document.getElementById("photo");
+
+    button.addEventListener("click", () => {
+      // Mostrar mensagem e foto
+      message.style.display = "block";
+      photo.style.display = "block";
+
+      // Gerar girassóis permanentes
+      for (let i = 0; i < 20; i++) {
+        const flower = document.createElement("div");
+        flower.classList.add("sunflower");
+
+        flower.style.left = Math.random() * window.innerWidth + "px";
+        flower.style.top = Math.random() * window.innerHeight + "px";
+        flower.style.animationDelay = (Math.random() * 2) + "s";
+        flower.style.opacity = 0.8 + Math.random() * 0.2;
+
+        document.body.appendChild(flower);
+      }
+
+      // Esconder o botão após o clique
+      button.style.display = "none";
+    });
+  </script>
+</body>
+</html>
